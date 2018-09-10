@@ -15,14 +15,15 @@ public class Shout : MonoBehaviour
 	{
 		_rangeObject.transform.localScale = Vector3.zero;
 	}
-	void Update()
+
+	public void Activate(bool isShouting)
 	{
-		if (Input.GetKey(KeyCode.LeftControl))
+		if (isShouting)
 		{
 			_duration += Time.deltaTime;
 			_rangeObject.transform.localScale = Vector3.one * _duration * _rangeSpeed;
 		}
-		if (Input.GetKeyUp(KeyCode.LeftControl))
+		else
 		{
 			_rangeObject.GetComponent<ShoutRange>().Stop();
 			_duration = 0f;

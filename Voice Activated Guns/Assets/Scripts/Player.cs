@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
 
 	private Animator _animator;
 
+	private Reaction _reaction;
+
+	private Gun _gun;
 
 	void Awake()
 	{
@@ -36,6 +39,8 @@ public class Player : MonoBehaviour
 		Alive = true;
 		_startPos = transform.position;
 		_startRot = transform.rotation;
+		PickupGun(GetComponentInChildren<Gun>());
+		_reaction = GetComponentInChildren<Reaction>();
 	}
 
 	void Start()
@@ -74,9 +79,28 @@ public class Player : MonoBehaviour
 				_animator.SetTrigger("Jump");
 				Jump();
 			}
+
+			if (!_gun.Reloading)
+			{
+				if (Input.GetKey(KeyCode.LeftControl))
+				{
+					_shout.Activate(isShouting: true);
+				}
+				if (Input.GetKeyUp(KeyCode.LeftControl))
+				{
+					_shout.Activate(isShouting: false);
+					GunShot();
+				}
+			}
 		}
 
 		StatusSprite.color = Alive ? AliveColor : DeadColor;
+	}
+
+	public void PickupGun(Gun gun)
+	{
+		_gun = gun;
+		_gun.GunShotAction = ResponseGunShot;
 	}
 
 	private bool IsGrounded()
@@ -108,8 +132,20 @@ public class Player : MonoBehaviour
 	public void Hit()
 	{
 		Stop();
+		_reaction.React(Reaction.ReactionType.Killed);
 		Alive = false;
 	}
+
+	public void GunShot()
+	{
+		_reaction.React(Reaction.ReactionType.FireGun);
+	}
+
+	public void ResponseGunShot()
+	{
+		_reaction.React(Reaction.ReactionType.ResponseFire);
+	}
+
 
 	public void LeaveGame()
 	{
