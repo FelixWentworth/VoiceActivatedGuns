@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
 	private float _timeElapsed;
 
 
-	public void JoinGame(Player p)
+	public int JoinGame(Player p)
 	{
 		if (!_players.Contains(p))
 		{
 			_players.Add(p);
 		}
+		return _players.Count;
 	}
 
 	public void LeaveGame(Player p)
