@@ -48,8 +48,7 @@ public abstract class Gun : MonoBehaviour
 	protected virtual void Fire(float speed)
 	{
 		var bullet = Instantiate(_bullet, _bulletSpawnPosition.position, Quaternion.identity).GetComponent<Bullet>();
-		bullet.transform.SetParent(transform, true);
-		bullet.Fire(speed, transform.right);
+		bullet.Fire(speed, transform.right, GetComponentInParent<Player>());
 		_shotsAvailable--;
 
 		// if anything is listening to this action, call this

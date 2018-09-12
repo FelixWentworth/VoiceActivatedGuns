@@ -19,9 +19,9 @@ public class Bullet : MonoBehaviour
 	private float _elapsedTime;
 	private Player _player;
 
-	public void Fire(float speed, Vector3 direction)
+	public void Fire(float speed, Vector3 direction, Player player)
 	{
-		_player = GetComponentInParent<Player>();
+		_player = player;
 		GetComponent<Rigidbody2D>().AddForce(direction * _baseSpeed * speed , ForceMode2D.Force);
 	}
 

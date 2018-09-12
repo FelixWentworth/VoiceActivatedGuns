@@ -23,6 +23,7 @@ public class Shout : MonoBehaviour
 	public void Reset()
 	{
 		_rangeObject.transform.localScale = Vector3.zero;
+		_duration = 0f;
 	}
 
 	public void Activate(bool isShouting)
