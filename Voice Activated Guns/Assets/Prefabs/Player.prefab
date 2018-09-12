@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1017321179345486
 GameObject:
   m_ObjectHideFlags: 1
@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 114936308379240360}
   - component: {fileID: 61482473739770966}
   - component: {fileID: 50502207684485448}
-  - component: {fileID: 114103662351693806}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -199,8 +198,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1673138381381994}
-  m_LocalRotation: {x: -0, y: 0.00000031292436, z: -0, w: 1}
-  m_LocalPosition: {x: -15.37, y: -3.97, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.313568, y: 0.38999993, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4810573460356800}
@@ -246,7 +245,7 @@ Transform:
   m_GameObject: {fileID: 1017321179345486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0004000187, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4413643102546494}
   m_RootOrder: 0
@@ -297,7 +296,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346888469478928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.702, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.05, z: -0}
   m_LocalScale: {x: 4, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 4316535198317762}
@@ -309,7 +308,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539674273889002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.32, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
@@ -362,7 +361,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 1.8}
+  m_Size: {x: 0.25, y: 1.8}
   m_EdgeRadius: 0
 --- !u!61 &61530211793732444
 BoxCollider2D:
@@ -387,7 +386,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.01, y: 0.16}
   m_EdgeRadius: 0
 --- !u!95 &95086938312362342
 Animator:
@@ -422,22 +421,6 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114103662351693806
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1673138381381994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05c90475bd972cc43912c7a1e155f59e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sendTriggerMessage: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  skinWidth: 0.1
 --- !u!114 &114450756686978202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,7 +433,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rangeObject: {fileID: 1017321179345486}
-  _rangeSpeed: 15
+  _rangeSpeed: 50
+  _minSpeed: 0.1
+  _maxSpeed: 1.5
 --- !u!114 &114579545721476516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -479,8 +464,8 @@ MonoBehaviour:
   Reloading: 0
   ClipSize: 6
   Ammo: 0
-  _timeBetweenShots: 0.5
-  _reloadTime: 2
+  _timeBetweenShots: 0.25
+  _reloadTime: 0.5
   _bullet: {fileID: 1233619746666762, guid: 009fed1c599e88a44b14cc9ef4fab88e, type: 2}
   _bulletSpawnPosition: {fileID: 4810573460356800}
 --- !u!114 &114848478220648372
@@ -507,9 +492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanControl: 1
   Alive: 1
-  Score: 61
+  Score: 86
   _speed: 8
-  _jumpHeight: 30
+  _jumpHeight: 40
   StatusSprite: {fileID: 212999758545848254}
   AliveColor: {r: 0.39689672, g: 0.9150943, b: 0.3237362, a: 1}
   DeadColor: {r: 1, g: 0.36320752, b: 0.36320752, a: 1}

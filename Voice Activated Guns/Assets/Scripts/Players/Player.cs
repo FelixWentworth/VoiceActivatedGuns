@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
 	public void Respawn()
 	{
 		Alive = true;
+		_shout.Reset();
 		transform.position = _startPos;
 		transform.rotation = _startRot;
 		StatusSprite.color = AliveColor;
@@ -128,14 +129,11 @@ public class Player : MonoBehaviour
 		var dist = Vector2.Distance(transform.position, newPos);
 		var rayHit = Physics2D.RaycastAll(transform.position, (newPos-new Vector2(transform.position.x, transform.position.y)), dist);
 
-		Debug.DrawLine(transform.position, newPos, Color.red);
-
 		// Cannot move if the movement will result in a wall hit
 		if (rayHit == null || !rayHit.Any(r => r.collider.tag == "Level"))
 		{
 			transform.position = transform.position + (Vector3.right * x) * _speed * Time.deltaTime;
 		}
-		Debug.Log(rayHit.Length);
 	}
 
 	private void Stop()

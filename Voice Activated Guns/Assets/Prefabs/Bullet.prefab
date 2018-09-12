@@ -69,7 +69,7 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233619746666762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseSpeed: 100
+  Tile: {fileID: 11400000, guid: 141a840b0b4e96a4ba4f894693c14905, type: 2}
+  debugTest: 1
 --- !u!212 &212915313485403162
 SpriteRenderer:
   m_ObjectHideFlags: 1

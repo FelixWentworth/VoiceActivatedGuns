@@ -11,7 +11,16 @@ public class Shout : MonoBehaviour
 
 	private float _duration;
 
+	[SerializeField] private float _minSpeed = 1f;
+	[SerializeField] private float _maxSpeed = 10f;
+
+
 	void Start()
+	{
+		Reset();
+	}
+
+	public void Reset()
 	{
 		_rangeObject.transform.localScale = Vector3.zero;
 	}
@@ -21,6 +30,7 @@ public class Shout : MonoBehaviour
 		if (isShouting)
 		{
 			_duration += Time.deltaTime;
+			_duration = Mathf.Clamp(_duration, _minSpeed, _maxSpeed);
 			_rangeObject.transform.localScale = Vector3.one * _duration * _rangeSpeed;
 		}
 		else
