@@ -164,6 +164,7 @@ public class Player : MonoBehaviour
 
 	public void ResponseGunShot()
 	{
+		_shout.Reset();
 		_reaction.React(Reaction.ReactionType.ResponseFire);
 	}
 

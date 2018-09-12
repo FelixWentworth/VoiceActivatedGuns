@@ -43,14 +43,11 @@ public class Bullet : MonoBehaviour
 		//if (transform.rotation.)
 		var direction = new Vector2(transform.position.x, transform.position.y) - _lastPos;
 		var distance = Vector2.Distance(transform.position, _lastPos);
-		Debug.DrawRay(_lastPos, direction, Color.red, 0.5f);
+		Debug.DrawRay(_lastPos, direction, Color.red, 0.25f);
 		var ray = Physics2D.RaycastAll(_lastPos, direction, distance);
-
-		
 
 		if (ray.Length != 0)
 		{
-			Debug.Log(ray.Length);
 			for (var i = 0; i < ray.Length; i++)
 			{
 				if (ray[i].collider.tag == "Level")

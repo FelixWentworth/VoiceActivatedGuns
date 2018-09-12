@@ -33,7 +33,7 @@ public abstract class Gun : MonoBehaviour
 	{
 		InRangeAction = Fire;
 		_shotsAvailable = ClipSize;
-		}
+	}
 
 	void Update()
 	{
