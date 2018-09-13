@@ -198,8 +198,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1673138381381994}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.313568, y: 0.38999993, z: 0}
+  m_LocalRotation: {x: -0, y: 0.00000031292436, z: -0, w: 1}
+  m_LocalPosition: {x: -16.46, y: 5.69, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4810573460356800}
@@ -464,7 +464,7 @@ MonoBehaviour:
   Reloading: 0
   ClipSize: 6
   Ammo: 0
-  _timeBetweenShots: 0.25
+  _timeBetweenShots: 0.5
   _reloadTime: 0.5
   _bullet: {fileID: 1233619746666762, guid: 009fed1c599e88a44b14cc9ef4fab88e, type: 2}
   _bulletSpawnPosition: {fileID: 4810573460356800}
@@ -491,10 +491,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
+  PlayerColor: {r: 0.0141509175, g: 0.4675668, b: 1, a: 1}
   Alive: 1
   Score: 86
   _speed: 8
   _jumpHeight: 40
+  _playerScoreObject: {fileID: 1951220209437262, guid: e55fd2920d502c847ba82da577aa2779,
+    type: 2}
+  _playerScoreParent: {fileID: 0}
   StatusSprite: {fileID: 212999758545848254}
   AliveColor: {r: 0.39689672, g: 0.9150943, b: 0.3237362, a: 1}
   DeadColor: {r: 1, g: 0.36320752, b: 0.36320752, a: 1}
@@ -504,7 +508,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346888469478928}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
 	public bool CanControl;
 
+
 	[HideInInspector]
 	public bool Alive;
 
@@ -16,6 +17,10 @@ public class Player : MonoBehaviour
 	[SerializeField] private float _speed = 1f;
 	[SerializeField] private float _jumpHeight = 1f;
 
+	private PlayerScore _playerScoreUI;
+	[SerializeField] private GameObject _playerScoreObject;
+	[SerializeField] private Transform _playerScoreParent;
+
 	private Rigidbody2D _rigidbody;
 
 	private Shout _shout;
@@ -23,6 +28,7 @@ public class Player : MonoBehaviour
 	public SpriteRenderer StatusSprite;
 	public Color AliveColor;
 	public Color DeadColor;
+	private Color _playerColor;
 
 	private Vector3 _startPos;
 	private Quaternion _startRot;
@@ -33,7 +39,7 @@ public class Player : MonoBehaviour
 
 	private Gun _gun;
 
-	private PlayerMovement _playerMovement;
+	private PlayerControls _playerControls;
 
 	void Awake()
 	{
@@ -51,12 +57,21 @@ public class Player : MonoBehaviour
 	{
 		var playerNum = GameObject.Find("GameManager").GetComponent<GameManager>().JoinGame(this);
 
-		_playerMovement = new PlayerMovement(playerNum, MoveAction, StopAction, JumpAction, ShoutAction);
+		_playerControls = new PlayerControls(playerNum, MoveAction, StopAction, JumpAction, ShoutAction, LookAction);
+		_playerScoreUI = Instantiate(_playerScoreObject).GetComponent<PlayerScore>();
+		_playerScoreUI.transform.SetParent(_playerScoreParent);
+	}
+
+	public void SetColor(Color color)
+	{
+		_playerColor = color;
+		_animator.gameObject.GetComponent<SpriteRenderer>().color = _playerColor;
 	}
 
 	void Update()
 	{
-		_playerMovement.Tick();
+		_playerControls.Tick();
+		_playerScoreUI.Set(_playerColor, Score.ToString());
 	}
 
 	private void MoveAction(float x)
@@ -73,6 +88,14 @@ public class Player : MonoBehaviour
 		if (CanControl && Alive)
 		{
 			_animator.SetBool("Running", false);
+		}
+	}
+
+	private void LookAction(int zRotation)
+	{
+		if (CanControl && Alive)
+		{
+			_gun.transform.rotation = Quaternion.Euler(0,0, zRotation);
 		}
 	}
 
@@ -171,6 +194,7 @@ public class Player : MonoBehaviour
 
 	public void LeaveGame()
 	{
+		Destroy(_playerScoreUI.gameObject);
 		GameObject.Find("GameManager").GetComponent<GameManager>().LeaveGame(this);
 	}
 }
